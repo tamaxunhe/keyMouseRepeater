@@ -131,7 +131,6 @@ class RecorderCore:
     def on_key_press(self, key):
         if key == AppConfig.EXIT_HOTKEY:
             return False
-        # F9暂停热键，只执行功能，不录入按键事件
         if key == AppConfig.REC_PAUSE_HOTKEY:
             self.toggle_pause()
             return
@@ -160,7 +159,6 @@ class RecorderCore:
     def on_key_release(self, key):
         if key == AppConfig.EXIT_HOTKEY:
             return False
-        # F9释放同样跳过录制
         if key == AppConfig.REC_PAUSE_HOTKEY:
             return
 
@@ -224,11 +222,43 @@ class PlayerCore:
         self.key_ctrl = KeyCtrl()
         self.log_queue = log_queue
         self.abort_flag = False
+        self.action_data = []
+        self.speed = 1.0
+        self.offset_cfg = {}
+        self._play_thread_running = False
 
     def stop_play(self):
         self.abort_flag = True
 
-    def play_recording(self, file_name: str,
+    def load_sequence(self, action_list: list):
+        """载入待回放动作序列，支持外部传入合并后的轨道动作"""
+        self.action_data = action_list.copy()
+
+    def _find_seek_index(self, target_abs_time: float) -> int:
+        """二分查找，定位第一个 abs_time >= target_abs_time 的动作下标"""
+        low = 0
+        high = len(self.action_data) - 1
+        best = 0
+        while low <= high:
+            mid = (low + high) // 2
+            t = self.action_data[mid]["abs_time"]
+            if t <= target_abs_time:
+                best = mid
+                low = mid + 1
+            else:
+                high = mid - 1
+        return best
+
+    def seek_playback(self, target_abs_time: float):
+        """对外接口：拖拽游标调用，跳转到指定绝对时间开始播放"""
+        if self._play_thread_running:
+            self.log_queue.put("⚠️ 正在回放中，暂不支持实时seek，请等待本轮结束")
+            return
+        idx = self._find_seek_index(target_abs_time)
+        self.log_queue.put(f"🎯 跳转定位至 时间={target_abs_time:.2f}s，动作下标={idx}")
+        return idx
+
+    def play_recording(self, action_data: list,
                         loop_count: int,
                         wait_sec: float,
                         speed: float,
@@ -240,13 +270,20 @@ class PlayerCore:
                         enable_offset: bool,
                         exclude_set: set):
         self.abort_flag = False
+        self._play_thread_running = True
+        self.load_sequence(action_data)
+        self.speed = speed
         try:
-            action_data = FileUtil.load_recording(file_name)
-        except FileNotFoundError:
-            self.log_queue.put(f"❌ 错误：文件 {file_name} 不存在！")
-            return
-        except json.JSONDecodeError:
-            self.log_queue.put("❌ 文件损坏，不是合法录制脚本！")
+            self._execute_play(loop_count, wait_sec, speed, offset_start_round, offset_mode, base_off_x, base_off_y, target_click_set, enable_offset)
+        finally:
+            self._play_thread_running = False
+
+    def _execute_play(self, loop_count: int, wait_sec: float, speed: float,
+                      offset_start_round: int, offset_mode: str, base_off_x: int, base_off_y: int,
+                      target_click_set: set, enable_offset: bool):
+        action_data = self.action_data
+        if not action_data:
+            self.log_queue.put("⚠️ 无回放动作序列")
             return
 
         self.log_queue.put(f"\n===== 回放启动 | 总动作数：{len(action_data)} =====")
@@ -283,15 +320,13 @@ class PlayerCore:
         iter_acc_x = 0
         iter_acc_y = 0
 
-        # =========【预扫描：收集脚本内所有鼠标点击动作，记录全局序号】=========
         click_global_index = 0
-        all_click_positions = []  # 存储：(动作下标, 点击序号)
+        all_click_positions = []
         for act_idx, act in enumerate(action_data):
             if act["type"] == "mouse_click":
                 click_global_index += 1
                 all_click_positions.append((act_idx, click_global_index))
 
-        # 筛选出用户勾选的生效点击对应的动作下标
         effective_click_act_indexes = sorted([
             act_idx for act_idx, c_idx in all_click_positions
             if (not target_click_set) or (c_idx in target_click_set)
@@ -321,29 +356,24 @@ class PlayerCore:
                 self.log_queue.put(f"本轮偏移 X:{round_off_x} Y:{round_off_y}")
 
             click_index = 0
-            total_act = len(action_data)
-
             for idx, act in enumerate(action_data):
-                # 发送播放位置给GUI，驱动时间轴红色游标
-                self.log_queue.put(("PLAY_INDEX", idx))
+                self.log_queue.put(("PLAY_ABSTIME", act["abs_time"]))
                 if self.abort_flag:
                     break
                 time.sleep(act["delay"] / speed)
                 act_type = act["type"]
 
-                # 判断当前动作是否处于【任意两个相邻生效点击区间内】
                 in_effect_range = False
                 for i in range(len(effective_click_act_indexes) - 1):
-                    start_act_idx = effective_click_act_indexes[i]
-                    end_act_idx = effective_click_act_indexes[i+1]
-                    if start_act_idx <= idx <= end_act_idx:
+                    s_idx = effective_click_act_indexes[i]
+                    e_idx = effective_click_act_indexes[i + 1]
+                    if s_idx <= idx <= e_idx:
                         in_effect_range = True
                         break
 
                 if act_type == "mouse_move":
                     x = act["x"]
                     y = act["y"]
-                    # 新规则：区间内鼠标移动全部偏移
                     if use_offset_round and in_effect_range:
                         x += round_off_x
                         y += round_off_y
@@ -353,7 +383,6 @@ class PlayerCore:
                     click_index += 1
                     x = act["x"]
                     y = act["y"]
-                    # 点击自身沿用原有规则
                     if use_offset_round and ((not target_click_set) or (click_index in target_click_set)):
                         x += round_off_x
                         y += round_off_y
@@ -370,20 +399,19 @@ class PlayerCore:
                 elif act_type == "key_press":
                     key_str = act["key"]
                     if key_str.startswith("Key."):
-                        k = getattr(Key, key_str.split(".")[1])
+                        k = getattr(Key, key_str.split(".")[-1])
                     else:
                         k = key_str
                     self.key_ctrl.press(k)
                 elif act_type == "key_release":
                     key_str = act["key"]
                     if key_str.startswith("Key."):
-                        k = getattr(Key, key_str.split(".")[1])
+                        k = getattr(Key, key_str.split(".")[-1])
                     else:
                         k = key_str
                     self.key_ctrl.release(k)
 
-        # 播放结束，清空游标
-        self.log_queue.put(("PLAY_INDEX", None))
+        self.log_queue.put(("PLAY_ABSTIME", None))
         esc_listener.stop()
         if self.abort_flag:
             self.log_queue.put("\n⚠️ 回放被手动ESC终止")

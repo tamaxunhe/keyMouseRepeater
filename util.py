@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 from pynput.mouse import Button
 from config import AppConfig
+from timeline_clip_model import Track
 
 
 class ScreenUtil:
@@ -59,6 +60,21 @@ class FileUtil:
                 act["abs_time"] = accum
             accum += act["delay"]
         return raw
+
+    @staticmethod
+    def track_from_json(file_path: str, track_name: str = None, color="#66aaff") -> Track:
+        """从json录制文件新建轨道，用于【导入时间轨道】功能"""
+        actions = FileUtil.load_recording(file_path)
+        if track_name is None:
+            track_name = file_path.split("/")[-1].split("\\")[-1]
+        track = Track(name=track_name, color=color)
+        track.actions = actions
+        return track
+
+    @staticmethod
+    def track_save_json(track: Track, save_path: str):
+        """将一条轨道导出为录制json文件"""
+        FileUtil.save_recording(save_path, track.actions)
 
 
 class ActionConverter:
