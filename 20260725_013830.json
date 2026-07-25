@@ -1,0 +1,153 @@
+[
+  {
+    "type": "mouse_move",
+    "x": 1897,
+    "y": 406,
+    "delay": 1.9978,
+    "abs_time": 1.9978
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.0,
+    "abs_time": 1.998
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1356,
+    "abs_time": 2.1335
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.4576,
+    "abs_time": 2.5911
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1303,
+    "abs_time": 2.7215
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.3203,
+    "abs_time": 3.0418
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1123,
+    "abs_time": 3.1541
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.3098,
+    "abs_time": 3.4639
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1439,
+    "abs_time": 3.6078
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.8898,
+    "abs_time": 4.4976
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1235,
+    "abs_time": 4.6211
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.3628,
+    "abs_time": 4.9839
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1536,
+    "abs_time": 5.1376
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.3502,
+    "abs_time": 5.4878
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1763,
+    "abs_time": 5.664
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.3537,
+    "abs_time": 6.0177
+  },
+  {
+    "type": "mouse_click",
+    "x": 1897,
+    "y": 406,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1836,
+    "abs_time": 6.2013
+  }
+]
