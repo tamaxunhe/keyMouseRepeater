@@ -1,0 +1,501 @@
+[
+  {
+    "type": "key_press",
+    "key": "Key.backspace",
+    "delay": 5.6615,
+    "abs_time": 5.6615,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1675,
+    "y": 626,
+    "delay": 0.7487,
+    "abs_time": 4.9566,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1675,
+    "y": 626,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.0,
+    "abs_time": 4.9566,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1673,
+    "y": 626,
+    "delay": 0.1277,
+    "abs_time": 5.0844,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1667,
+    "y": 625,
+    "delay": 0.008,
+    "abs_time": 5.0923,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1661,
+    "y": 624,
+    "delay": 0.0079,
+    "abs_time": 5.1002,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1651,
+    "y": 622,
+    "delay": 0.008,
+    "abs_time": 5.1083,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1640,
+    "y": 621,
+    "delay": 0.0081,
+    "abs_time": 5.1164,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1629,
+    "y": 619,
+    "delay": 0.0078,
+    "abs_time": 5.1243,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1615,
+    "y": 616,
+    "delay": 0.0082,
+    "abs_time": 5.1324,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1602,
+    "y": 615,
+    "delay": 0.0078,
+    "abs_time": 5.1403,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1587,
+    "y": 613,
+    "delay": 0.008,
+    "abs_time": 5.1482,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1574,
+    "y": 610,
+    "delay": 0.008,
+    "abs_time": 5.1563,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1562,
+    "y": 609,
+    "delay": 0.008,
+    "abs_time": 5.1643,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1554,
+    "y": 608,
+    "delay": 0.0079,
+    "abs_time": 5.1722,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1546,
+    "y": 606,
+    "delay": 0.008,
+    "abs_time": 5.1802,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1543,
+    "y": 606,
+    "delay": 0.008,
+    "abs_time": 5.1882,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1539,
+    "y": 605,
+    "delay": 0.0081,
+    "abs_time": 5.1963,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1537,
+    "y": 605,
+    "delay": 0.0079,
+    "abs_time": 5.2042,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1537,
+    "y": 605,
+    "delay": 0.0081,
+    "abs_time": 5.2123,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1536,
+    "y": 605,
+    "delay": 0.0081,
+    "abs_time": 5.2204,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1535,
+    "y": 605,
+    "delay": 0.0079,
+    "abs_time": 5.2283,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1532,
+    "y": 605,
+    "delay": 0.0081,
+    "abs_time": 5.2364,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1529,
+    "y": 605,
+    "delay": 0.0079,
+    "abs_time": 5.2443,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1525,
+    "y": 605,
+    "delay": 0.0081,
+    "abs_time": 5.2525,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1520,
+    "y": 605,
+    "delay": 0.0078,
+    "abs_time": 5.2603,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1514,
+    "y": 605,
+    "delay": 0.008,
+    "abs_time": 5.2683,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1506,
+    "y": 605,
+    "delay": 0.0081,
+    "abs_time": 5.2764,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1500,
+    "y": 605,
+    "delay": 0.0079,
+    "abs_time": 5.2843,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1495,
+    "y": 605,
+    "delay": 0.0082,
+    "abs_time": 5.2925,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1489,
+    "y": 605,
+    "delay": 0.008,
+    "abs_time": 5.3005,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1485,
+    "y": 605,
+    "delay": 0.0079,
+    "abs_time": 5.3083,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1482,
+    "y": 605,
+    "delay": 0.008,
+    "abs_time": 5.3164,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1479,
+    "y": 605,
+    "delay": 0.0078,
+    "abs_time": 5.3242,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1477,
+    "y": 605,
+    "delay": 0.0081,
+    "abs_time": 5.3323,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1476,
+    "y": 605,
+    "delay": 0.0082,
+    "abs_time": 5.3405,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1476,
+    "y": 605,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1923,
+    "abs_time": 5.5328,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1896,
+    "y": 996,
+    "delay": 0.2797,
+    "abs_time": 5.8125,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1896,
+    "y": 996,
+    "button": "x2",
+    "pressed": true,
+    "delay": 0.0,
+    "abs_time": 5.8126,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1895,
+    "y": 995,
+    "delay": 0.1041,
+    "abs_time": 5.9166,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1894,
+    "y": 994,
+    "delay": 0.0084,
+    "abs_time": 5.9251,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1894,
+    "y": 992,
+    "delay": 0.0074,
+    "abs_time": 5.9325,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1891,
+    "y": 988,
+    "delay": 0.0081,
+    "abs_time": 5.9406,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1891,
+    "y": 988,
+    "button": "x2",
+    "pressed": false,
+    "delay": 0.0005,
+    "abs_time": 5.9411,
+    "modifiers": []
+  },
+  {
+    "type": "key_press",
+    "key": "Key.ctrl_l",
+    "delay": 0.0024,
+    "abs_time": 5.9435,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_press",
+    "key": "c",
+    "delay": 0.0022,
+    "abs_time": 5.9457,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "c",
+    "delay": 0.0021,
+    "abs_time": 5.9478,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "Key.ctrl_l",
+    "delay": 0.0021,
+    "abs_time": 5.9498,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1749,
+    "y": 799,
+    "delay": 0.2788,
+    "abs_time": 6.2286,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1749,
+    "y": 799,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.0,
+    "abs_time": 6.2286,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1749,
+    "y": 799,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1202,
+    "abs_time": 6.3488,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1749,
+    "y": 799,
+    "button": "x1",
+    "pressed": true,
+    "delay": 0.4636,
+    "abs_time": 6.8125,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1749,
+    "y": 799,
+    "delay": 0.0158,
+    "abs_time": 6.8283,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1750,
+    "y": 799,
+    "delay": 0.0161,
+    "abs_time": 6.8444,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1751,
+    "y": 800,
+    "delay": 0.0081,
+    "abs_time": 6.8525,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1751,
+    "y": 800,
+    "button": "x1",
+    "pressed": false,
+    "delay": 0.0883,
+    "abs_time": 6.9407,
+    "modifiers": []
+  },
+  {
+    "type": "key_press",
+    "key": "Key.ctrl_l",
+    "delay": 0.0038,
+    "abs_time": 6.9446,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_press",
+    "key": "v",
+    "delay": 0.0034,
+    "abs_time": 6.948,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "v",
+    "delay": 0.0023,
+    "abs_time": 6.9503,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "Key.ctrl_l",
+    "delay": 0.0024,
+    "abs_time": 6.9527,
+    "modifiers": []
+  }
+]

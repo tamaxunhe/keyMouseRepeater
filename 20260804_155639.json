@@ -1,0 +1,440 @@
+[
+  {
+    "type": "mouse_move",
+    "x": 2001,
+    "y": 623,
+    "delay": 0.8839,
+    "abs_time": 0.8839,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 2001,
+    "y": 623,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.0,
+    "abs_time": 0.884,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 2001,
+    "y": 623,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.0879,
+    "abs_time": 0.9719,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1766,
+    "y": 602,
+    "delay": 0.3527,
+    "abs_time": 1.3246,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1766,
+    "y": 602,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.0,
+    "abs_time": 1.3247,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1758,
+    "y": 602,
+    "delay": 0.0067,
+    "abs_time": 1.3314,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1750,
+    "y": 602,
+    "delay": 0.0079,
+    "abs_time": 1.3394,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1741,
+    "y": 602,
+    "delay": 0.0081,
+    "abs_time": 1.3475,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1730,
+    "y": 602,
+    "delay": 0.0078,
+    "abs_time": 1.3553,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1717,
+    "y": 602,
+    "delay": 0.008,
+    "abs_time": 1.3634,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1698,
+    "y": 602,
+    "delay": 0.008,
+    "abs_time": 1.3714,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1678,
+    "y": 602,
+    "delay": 0.0081,
+    "abs_time": 1.3794,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1659,
+    "y": 602,
+    "delay": 0.008,
+    "abs_time": 1.3875,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1643,
+    "y": 602,
+    "delay": 0.0078,
+    "abs_time": 1.3953,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1626,
+    "y": 602,
+    "delay": 0.0083,
+    "abs_time": 1.4037,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1611,
+    "y": 602,
+    "delay": 0.0078,
+    "abs_time": 1.4114,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1598,
+    "y": 602,
+    "delay": 0.0081,
+    "abs_time": 1.4195,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1585,
+    "y": 601,
+    "delay": 0.0078,
+    "abs_time": 1.4273,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1573,
+    "y": 599,
+    "delay": 0.008,
+    "abs_time": 1.4353,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1564,
+    "y": 598,
+    "delay": 0.008,
+    "abs_time": 1.4433,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1556,
+    "y": 596,
+    "delay": 0.0081,
+    "abs_time": 1.4514,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1548,
+    "y": 594,
+    "delay": 0.008,
+    "abs_time": 1.4594,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1538,
+    "y": 592,
+    "delay": 0.0079,
+    "abs_time": 1.4673,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1529,
+    "y": 591,
+    "delay": 0.0082,
+    "abs_time": 1.4755,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1519,
+    "y": 590,
+    "delay": 0.0078,
+    "abs_time": 1.4833,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1511,
+    "y": 590,
+    "delay": 0.0082,
+    "abs_time": 1.4915,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1504,
+    "y": 590,
+    "delay": 0.008,
+    "abs_time": 1.4995,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1494,
+    "y": 590,
+    "delay": 0.008,
+    "abs_time": 1.5074,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1485,
+    "y": 590,
+    "delay": 0.008,
+    "abs_time": 1.5154,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1473,
+    "y": 587,
+    "delay": 0.0081,
+    "abs_time": 1.5236,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1464,
+    "y": 585,
+    "delay": 0.0079,
+    "abs_time": 1.5315,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1452,
+    "y": 584,
+    "delay": 0.008,
+    "abs_time": 1.5395,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1441,
+    "y": 581,
+    "delay": 0.008,
+    "abs_time": 1.5475,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1429,
+    "y": 578,
+    "delay": 0.0079,
+    "abs_time": 1.5555,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1418,
+    "y": 577,
+    "delay": 0.0078,
+    "abs_time": 1.5633,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1408,
+    "y": 575,
+    "delay": 0.0082,
+    "abs_time": 1.5715,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1402,
+    "y": 573,
+    "delay": 0.0078,
+    "abs_time": 1.5793,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1399,
+    "y": 572,
+    "delay": 0.008,
+    "abs_time": 1.5874,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1398,
+    "y": 572,
+    "delay": 0.0159,
+    "abs_time": 1.6033,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1398,
+    "y": 572,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.0724,
+    "abs_time": 1.6757,
+    "modifiers": []
+  },
+  {
+    "type": "key_press",
+    "key": "Key.ctrl_l",
+    "delay": 0.1941,
+    "abs_time": 1.8698,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_press",
+    "key": "c",
+    "delay": 0.6619,
+    "abs_time": 2.5317,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "c",
+    "delay": 0.1433,
+    "abs_time": 2.675,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "Key.ctrl_l",
+    "delay": 0.0305,
+    "abs_time": 2.7056,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_move",
+    "x": 1750,
+    "y": 777,
+    "delay": 0.1942,
+    "abs_time": 2.8998,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1750,
+    "y": 777,
+    "button": "left",
+    "pressed": true,
+    "delay": 0.0,
+    "abs_time": 2.8998,
+    "modifiers": []
+  },
+  {
+    "type": "mouse_click",
+    "x": 1750,
+    "y": 777,
+    "button": "left",
+    "pressed": false,
+    "delay": 0.1119,
+    "abs_time": 3.0117,
+    "modifiers": []
+  },
+  {
+    "type": "key_press",
+    "key": "Key.enter",
+    "delay": 0.679,
+    "abs_time": 3.6907,
+    "modifiers": []
+  },
+  {
+    "type": "key_release",
+    "key": "Key.enter",
+    "delay": 0.0859,
+    "abs_time": 3.7766,
+    "modifiers": []
+  },
+  {
+    "type": "key_press",
+    "key": "Key.ctrl_l",
+    "delay": 0.0512,
+    "abs_time": 3.8278,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_press",
+    "key": "v",
+    "delay": 0.1259,
+    "abs_time": 3.9538,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "v",
+    "delay": 0.1382,
+    "abs_time": 4.092,
+    "modifiers": [
+      "Key.ctrl_l"
+    ]
+  },
+  {
+    "type": "key_release",
+    "key": "Key.ctrl_l",
+    "delay": 0.0915,
+    "abs_time": 4.1835,
+    "modifiers": []
+  }
+]
