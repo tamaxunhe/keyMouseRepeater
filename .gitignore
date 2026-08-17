@@ -1,0 +1,45 @@
+# .gitignore
+
+# Python缓存文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv
+
+# IDE配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志文件
+*.log
+
+# 录制脚本文件（如果不想包含示例录制文件）
+*.json
+!config.json  # 保留配置文件模板
+
+# 偏移文件
+*.txt
+!example_offset.txt  # 保留示例
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.temp
+
+# 配置文件（不包含在仓库中，由用户自己创建）
+macro_config.json
+build/
+dist/
+*.spec

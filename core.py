@@ -168,19 +168,26 @@ class RecorderCore:
         })
 
     def on_key_press(self, key):
-        if key == AppConfig.EXIT_HOTKEY:
+        # 获取当前快捷键
+        stop_key = AppConfig.get_key(AppConfig.HOTKEYS["stop_record"])
+        pause_key = AppConfig.get_key(AppConfig.HOTKEYS["pause_record"])
+        start_key = AppConfig.get_key(AppConfig.HOTKEYS["start_record"])
+        
+        if key == stop_key:
             return False
-        if key == AppConfig.REC_PAUSE_HOTKEY:
+        if key == pause_key:
             self.toggle_pause()
             return
         if self.rec_state == self.STATE_WAIT_START:
-            if key == AppConfig.START_HOTKEY:
+            if key == start_key:
                 self.rec_state = self.STATE_RECORDING
                 self.last_time = time.perf_counter()
                 self.rec_start_ts = time.perf_counter()
                 self.ignore_next_enter_release = True
-                self.log_queue.put("✅ 检测到F1，正式开始录制操作！")  # 修改提示
+                start_name = AppConfig.get_display_name(AppConfig.HOTKEYS["start_record"])
+                self.log_queue.put(f"✅ 检测到{start_name}，正式开始录制操作！")
             return
+        
         # 记录修饰键
         if key in AppConfig.MODIFIER_KEYS:
             self.pressed_modifiers.add(key)
@@ -199,11 +206,15 @@ class RecorderCore:
         self._push_action({"type": "key_press", "key": key_text, "delay": delay, "abs_time": abs_t})
 
     def on_key_release(self, key):
-        if key == AppConfig.EXIT_HOTKEY:
+        stop_key = AppConfig.get_key(AppConfig.HOTKEYS["stop_record"])
+        pause_key = AppConfig.get_key(AppConfig.HOTKEYS["pause_record"])
+        start_key = AppConfig.get_key(AppConfig.HOTKEYS["start_record"])
+        
+        if key == stop_key:
             return False
-        if key == AppConfig.REC_PAUSE_HOTKEY:
+        if key == pause_key:
             return
-        if self.ignore_next_enter_release and key == AppConfig.START_HOTKEY:
+        if self.ignore_next_enter_release and key == start_key:
             self.ignore_next_enter_release = False
             return
         if self.rec_state not in (self.STATE_RECORDING, self.STATE_REC_PAUSED):
@@ -227,13 +238,17 @@ class RecorderCore:
 
     def start_record(self):
         self.reset_recorder()
+        start_name = AppConfig.get_display_name(AppConfig.HOTKEYS["start_record"])
+        stop_name = AppConfig.get_display_name(AppConfig.HOTKEYS["stop_record"])
+        pause_name = AppConfig.get_display_name(AppConfig.HOTKEYS["pause_record"])
+        
         if self.record_mode == AppConfig.MODE_FULL:
             self.log_queue.put("===== 【全量录制模式】已启动 =====")
             self.log_queue.put("记录：鼠标完整轨迹+点击+滚轮+键盘")
         else:
             self.log_queue.put("===== 【简易录制模式】已启动 =====")
             self.log_queue.put("策略：空闲移动丢弃，拖拽动作完整记录，减小文件体积")
-        self.log_queue.put("等待按下【F1】正式录制，F2终止录制，F9暂停/继续录制\n")  # 修改提示
+        self.log_queue.put(f"等待按下【{start_name}】正式录制，{stop_name}终止录制，{pause_name}暂停/继续录制\n")
         mouse_listener = mouse.Listener(on_move=self.on_mouse_move, on_click=self.on_mouse_click, on_scroll=self.on_mouse_scroll)
         key_listener = keyboard.Listener(on_press=self.on_key_press, on_release=self.on_key_release)
         mouse_listener.start()
@@ -319,7 +334,8 @@ class PlayerCore:
             return
 
         def abort_watch(key):
-            if key == AppConfig.EXIT_HOTKEY:
+            stop_key = AppConfig.get_key(AppConfig.HOTKEYS["stop_record"])
+            if key == stop_key:
                 self.abort_flag = True
                 return False
         esc_listener = keyboard.Listener(on_press=abort_watch)

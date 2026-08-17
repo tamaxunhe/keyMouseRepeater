@@ -9,11 +9,17 @@ from config import AppConfig
 from core import RecorderCore, PlayerCore
 from util import ScreenUtil, FileUtil, parse_number_set
 from timeline_widget import TimelineWidget
+from hotkey_settings import HotkeySettingsDialog
+
 class MacroGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("键鼠宏录制工具 GUI版 | 模块化")
         self.root.geometry("1120x820")
+        
+        # 加载快捷键配置
+        AppConfig.load_hotkeys()
+        
         self.log_queue = queue.Queue()
         self.ui_action_queue = queue.Queue()
         self.player = PlayerCore(self.log_queue)
@@ -48,9 +54,11 @@ class MacroGUI:
     def build_ui(self):
         main_frame = ttk.Frame(self.root, padding=10)
         main_frame.pack(fill=tk.BOTH, expand=True)
+        
         coord_bar = ttk.Frame(main_frame)
         coord_bar.pack(fill=tk.X, pady=(0,6))
         ttk.Label(coord_bar, textvariable=self.mouse_coord_var, font=("Microsoft YaHei",10,"bold")).pack(side=tk.LEFT)
+        
         btn_frame = ttk.Frame(main_frame)
         btn_frame.pack(fill=tk.X, pady=5)
         self.btn_full = ttk.Button(btn_frame, text="启动【全量录制】", command=self.start_full_record)
@@ -63,6 +71,11 @@ class MacroGUI:
         self.btn_capture_offset.pack(side=tk.LEFT, padx=4)
         self.btn_monitor_mouse = ttk.Button(btn_frame, text="开启坐标监视", command=self.toggle_mouse_monitor)
         self.btn_monitor_mouse.pack(side=tk.LEFT, padx=4)
+        
+        # 添加快捷键设置按钮
+        self.btn_hotkey_settings = ttk.Button(btn_frame, text="⚙️ 快捷键设置", command=self.open_hotkey_settings)
+        self.btn_hotkey_settings.pack(side=tk.LEFT, padx=4)
+        
         timeline_wrap = ttk.LabelFrame(main_frame, text="录制时间轴（鼠标点击选定切割位置 | 圆点悬浮查看详情）")
         timeline_wrap.pack(fill=tk.X, pady=8)
         self.timeline = TimelineWidget(
@@ -70,6 +83,7 @@ class MacroGUI:
             on_cut_position_change=self.on_timeline_cut_changed
         )
         self.timeline.pack(fill=tk.X, padx=2, pady=2)
+        
         param_frame = ttk.Frame(main_frame)
         param_frame.pack(fill=tk.X, pady=6)
         ttk.Label(param_frame, text="循环次数(0=无限)：").pack(side=tk.LEFT)
@@ -86,6 +100,7 @@ class MacroGUI:
         spin_speed = ttk.Spinbox(param_frame, from_=AppConfig.MIN_SPEED, to=AppConfig.MAX_SPEED, increment=0.01,
                                  textvariable=self.speed_var, width=7)
         spin_speed.pack(side=tk.LEFT, padx=3)
+        
         offset_setting_frame = ttk.Frame(main_frame)
         offset_setting_frame.pack(fill=tk.X, pady=6)
         ttk.Label(offset_setting_frame, text="偏移总开关：").pack(side=tk.LEFT)
@@ -114,6 +129,7 @@ class MacroGUI:
         self.off_y_var = tk.StringVar(value="0")
         self.spin_oy = ttk.Spinbox(offset_setting_frame, from_=-9999, to=9999, textvariable=self.off_y_var, width=6)
         self.spin_oy.pack(side=tk.LEFT, padx=3)
+        
         # 加载偏移文件行
         file_offset_frame = ttk.Frame(main_frame)
         file_offset_frame.pack(fill=tk.X, pady=(0,6))
@@ -134,9 +150,13 @@ class MacroGUI:
         entry_exclude = ttk.Entry(offset_setting_frame, textvariable=self.exclude_clicks_var, width=10)
         entry_exclude.pack(side=tk.LEFT, padx=3)
         ttk.Label(offset_setting_frame, text="（例：22,33）").pack(side=tk.LEFT)
+        
         hint_frame = ttk.Frame(main_frame)
         hint_frame.pack(fill=tk.X, pady=6)
-        ttk.Label(hint_frame, text="操作提示：F1开始录制 | F2终止录制/回放/拾取 | F5=快速回放 | F9录制暂停/继续").pack(side=tk.LEFT) 
+        self.hint_label = ttk.Label(hint_frame, text="")  # 保存引用
+        self.hint_label.pack(side=tk.LEFT)
+        self.update_hotkey_hints()  # 初始化提示
+        
         log_frame = ttk.Frame(main_frame)
         log_frame.pack(fill=tk.BOTH, expand=True)
         self.log_text = tk.Text(log_frame, wrap=tk.WORD)
@@ -144,6 +164,26 @@ class MacroGUI:
         self.log_text.configure(yscrollcommand=scroll.set)
         self.log_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         scroll.pack(side=tk.RIGHT)
+
+    def update_hotkey_hints(self):
+        """更新界面上的快捷键提示"""
+        start_name = AppConfig.get_display_name(AppConfig.HOTKEYS["start_record"])
+        stop_name = AppConfig.get_display_name(AppConfig.HOTKEYS["stop_record"])
+        pause_name = AppConfig.get_display_name(AppConfig.HOTKEYS["pause_record"])
+        play_name = AppConfig.get_display_name(AppConfig.HOTKEYS["play_last"])
+        
+        self.hint_label.config(
+            text=f"操作提示：{start_name}开始录制 | {stop_name}终止录制/回放/拾取 | {play_name}=快速回放 | {pause_name}录制暂停/继续"
+        )
+
+    def open_hotkey_settings(self):
+        """打开快捷键设置窗口"""
+        HotkeySettingsDialog(self.root, on_save_callback=self.on_hotkey_saved)
+
+    def on_hotkey_saved(self):
+        """快捷键保存后的回调"""
+        self.log_queue.put("✅ 快捷键设置已更新，请重新启动录制/回放功能生效")
+        self.update_hotkey_hints()
 
     # 清空偏移文件
     def clear_offset_file_action(self):
@@ -264,7 +304,8 @@ class MacroGUI:
             return
         self.is_capturing_offset = True
         self.set_btn_state(tk.DISABLED)
-        self.log_queue.put("\n🎯【拾取偏移】请先后点击屏幕两个目标位置，ESC取消拾取")
+        stop_name = AppConfig.get_display_name(AppConfig.HOTKEYS["stop_record"])
+        self.log_queue.put(f"\n🎯【拾取偏移】请先后点击屏幕两个目标位置，{stop_name}取消拾取")
         def capture_thread():
             points = []
             def on_click(x, y, button, pressed):
@@ -277,7 +318,8 @@ class MacroGUI:
                 if len(points) >= 2:
                     return False
             def on_key(key):
-                if key == AppConfig.EXIT_HOTKEY:
+                stop_key = AppConfig.get_key(AppConfig.HOTKEYS["stop_record"])
+                if key == stop_key:
                     points.clear()
                     return False
             mouse_list = mouse.Listener(on_click=on_click)
@@ -399,14 +441,15 @@ class MacroGUI:
         if not self.last_play_file:
             self.log_queue.put("⚠️ 暂无历史回放文件，请先手动加载脚本！")
             return
-        self.log_queue.put(f"\n🎯 F5触发：快速回放最近文件 {self.last_play_file}")
+        self.log_queue.put(f"\n🎯 快速回放最近文件 {self.last_play_file}")
         self.set_btn_state(tk.DISABLED)
         threading.Thread(target=self._run_play_task, args=(self.last_play_file,), daemon=True).start()
 
     def start_global_hotkey_listener(self):
         def listen_hotkey():
             def on_key(key):
-                if key == AppConfig.PLAY_LAST_HOTKEY:
+                play_key = AppConfig.get_key(AppConfig.HOTKEYS["play_last"])
+                if key == play_key:
                     self.root.after(0, self.quick_play_last)
             listener = keyboard.Listener(on_press=on_key)
             listener.run()
