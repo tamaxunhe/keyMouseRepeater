@@ -179,7 +179,7 @@ class RecorderCore:
                 self.last_time = time.perf_counter()
                 self.rec_start_ts = time.perf_counter()
                 self.ignore_next_enter_release = True
-                self.log_queue.put("✅ 检测到回车，正式开始录制操作！")
+                self.log_queue.put("✅ 检测到F1，正式开始录制操作！")  # 修改提示
             return
         # 记录修饰键
         if key in AppConfig.MODIFIER_KEYS:
@@ -233,7 +233,7 @@ class RecorderCore:
         else:
             self.log_queue.put("===== 【简易录制模式】已启动 =====")
             self.log_queue.put("策略：空闲移动丢弃，拖拽动作完整记录，减小文件体积")
-        self.log_queue.put("等待按下【回车】正式录制，F9暂停/继续录制，ESC终止录制\n")
+        self.log_queue.put("等待按下【F1】正式录制，F2终止录制，F9暂停/继续录制\n")  # 修改提示
         mouse_listener = mouse.Listener(on_move=self.on_mouse_move, on_click=self.on_mouse_click, on_scroll=self.on_mouse_scroll)
         key_listener = keyboard.Listener(on_press=self.on_key_press, on_release=self.on_key_release)
         mouse_listener.start()

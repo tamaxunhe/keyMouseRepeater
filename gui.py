@@ -136,7 +136,7 @@ class MacroGUI:
         ttk.Label(offset_setting_frame, text="（例：22,33）").pack(side=tk.LEFT)
         hint_frame = ttk.Frame(main_frame)
         hint_frame.pack(fill=tk.X, pady=6)
-        ttk.Label(hint_frame, text="操作提示：F5=快速回放 | F9录制暂停/继续 | ESC终止录制/回放/拾取").pack(side=tk.LEFT)
+        ttk.Label(hint_frame, text="操作提示：F1开始录制 | F2终止录制/回放/拾取 | F5=快速回放 | F9录制暂停/继续").pack(side=tk.LEFT) 
         log_frame = ttk.Frame(main_frame)
         log_frame.pack(fill=tk.BOTH, expand=True)
         self.log_text = tk.Text(log_frame, wrap=tk.WORD)

@@ -4,8 +4,8 @@ class AppConfig:
     FILE_SUFFIX = ".json"
     MODE_FULL = "full"
     MODE_SIMPLE = "simple"
-    START_HOTKEY = Key.enter
-    EXIT_HOTKEY = Key.esc
+    START_HOTKEY = Key.f1      # 改为 F1
+    EXIT_HOTKEY = Key.f2       # 改为 F2
     PLAY_LAST_HOTKEY = Key.f5
     REC_PAUSE_HOTKEY = Key.f9
     TIME_PRECISION = 4
